@@ -1,0 +1,27 @@
+dataset:
+  path: mp-5229.cif
+
+gemnet:
+  _target_: mattergen.common.gemnet.gemnet_ctrl.GemNetTCtrl
+  atom_embedding:
+    _target_: mattergen.common.gemnet.layers.embedding_block.AtomEmbedding
+    emb_size: 128        # This matches the AtomEmbedding(emb_size=128) in your code.
+  emb_size_atom: 512     # Should match your code’s value.
+  emb_size_edge: 512     # Should match your code’s value.
+  latent_dim: 128        # Use the same latent dim as in your GemNetT call.
+  num_spherical: 7
+  num_radial: 128
+  num_blocks: 3
+  emb_size_trip: 64
+  emb_size_rbf: 16
+  emb_size_cbf: 16
+  cutoff: 6.0
+  otf_graph: false       # Precomputed graph is used instead of on-the-fly construction.
+  max_neighbors: 50
+  max_cell_images_per_dim: 5
+  regress_stress: false
+
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: cpu
+  devices: 1

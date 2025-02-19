@@ -1,0 +1,4 @@
+- data_module=custom_dataset
+- trainer.accelerator=cpu
+- trainer.devices=1
+- ~trainer.logger

@@ -155,4 +155,6 @@ class DiffusionModule(torch.nn.Module, Generic[T]):
         )
 
     def _get_device(self, batch: T) -> torch.device:
-        return next(batch[k].device for k in self.corruption.sdes.keys())
+       return next(batch[k].device for k in self.corruption.sdes.keys())
+
+
